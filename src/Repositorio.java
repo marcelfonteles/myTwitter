@@ -30,8 +30,9 @@ public class Repositorio implements IRepositorioUsuario {
 	
 	
 	public void atualizar(Perfil usuario) throws UNCException {
-		if (this.buscar(usuario.getUsuario()) == null) {
-			
+		if (this.buscar(usuario.getUsuario()) != null) {
+			Perfil conta = this.buscar(usuario.getUsuario());
+			conta.setAtivo(usuario.isAtivo());
 		}else {
 			throw new UNCException(usuario.getUsuario());
 		}		
