@@ -1,3 +1,4 @@
+package Exceptions;
 
 public class UJCException extends Exception {
 	private String usuario;

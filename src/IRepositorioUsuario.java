@@ -1,6 +1,8 @@
+import Exceptions.*;
+import Exceptions.UNCException;
 
 public interface IRepositorioUsuario {
-	public void cadastrar(Perfil usuario);
+	public void cadastrar(Perfil usuario) throws UJCException;
 	public Perfil buscar(String usuario);
-	public void atualizar(Perfil usuario);
+	public void atualizar(Perfil usuario) throws UNCException;
 }

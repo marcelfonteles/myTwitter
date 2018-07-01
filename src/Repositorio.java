@@ -1,16 +1,19 @@
 import java.util.Vector;
 
+import Exceptions.UJCException;
+import Exceptions.UNCException;
+
 public class Repositorio implements IRepositorioUsuario {
 	// Todos os perfis.
 	private Vector<Perfil> allPerfil;
 	
 	// Cadastrar perfil
-	public void cadastrar(Perfil usuario) {
+	public void cadastrar(Perfil usuario) throws UJCException {
 		if (this.buscar(usuario.getUsuario()) == null){
 			this.allPerfil.add(usuario);
 			System.out.println("Usuário cadastrado com sucesso.");
 		} else {
-			System.out.println("Nome de usuário já existente.");
+			throw new UJCException(usuario.getUsuario());
 		}		
 	}
 	
@@ -26,8 +29,12 @@ public class Repositorio implements IRepositorioUsuario {
 	}
 	
 	
-	public void atualizar(Perfil usuario) {
-		
+	public void atualizar(Perfil usuario) throws UNCException {
+		if (this.buscar(usuario.getUsuario()) == null) {
+			
+		}else {
+			throw new UNCException(usuario.getUsuario());
+		}		
 	}
 
 }
