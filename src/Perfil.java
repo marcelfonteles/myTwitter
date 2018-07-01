@@ -11,6 +11,7 @@ public class Perfil {
 	public Perfil(String usuario) {
 		this.usuario = usuario;
 	}
+	
 	// MÉTODOS
 	public void addSeguido(Perfil usuario) { // busca pra ver se existe
 		this.seguidos.add(usuario);		
@@ -43,15 +44,5 @@ public class Perfil {
 	public boolean isAtivo() {
 		return this.ativo;
 	}
-	
-	
-	
-	// MÉTODOS MARCEL DE TESTE
-	//public String buscar(Vector<Perfil> usuario) {
-		
-	//}
-	
-	
-	
 	
 }
