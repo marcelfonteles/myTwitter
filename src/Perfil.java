@@ -11,6 +11,7 @@ public class Perfil {
 	public Perfil(String usuario) {
 		this.usuario = usuario;
 	}
+	// MÉTODOS
 	public void addSeguido(Perfil usuario) {
 		
 	}
