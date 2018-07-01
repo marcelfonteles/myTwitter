@@ -4,7 +4,7 @@ public class Repositorio implements IRepositorioUsuario {
 	// Todos os perfis.
 	private Vector<Perfil> allPerfil;
 	
-	
+	// Cadastrar perfil
 	public void cadastrar(Perfil usuario) {
 		if (this.buscar(usuario.getUsuario()) == null){
 			this.allPerfil.add(usuario);
@@ -14,6 +14,7 @@ public class Repositorio implements IRepositorioUsuario {
 		}		
 	}
 	
+	// Procurar nomes de perfis iguais
 	public Perfil buscar(String usuario) {
 		Perfil user = null;
 		for (Perfil perfil : allPerfil) {
@@ -23,6 +24,8 @@ public class Repositorio implements IRepositorioUsuario {
 		}
 		return user;
 	}
+	
+	
 	public void atualizar(Perfil usuario) {
 		
 	}
