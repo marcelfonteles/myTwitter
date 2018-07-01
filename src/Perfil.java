@@ -12,34 +12,46 @@ public class Perfil {
 		this.usuario = usuario;
 	}
 	// MÉTODOS
-	public void addSeguido(Perfil usuario) {
-		
+	public void addSeguido(Perfil usuario) { // busca pra ver se existe
+		this.seguidos.add(usuario);		
 	}
-	public void addSeoguidor(Perfil usuario) {
-		
+	public void addSeguidor(Perfil usuario) { // busca pra ver se existe
+		this.seguidores.add(usuario);
 	}
-	public void addTweet(Tweet tweet) {
-		
+	public void addTweet(Tweet tweet) { // busca pra ver se existe
+		this.timeline.add(tweet);
 	}
-	public void setUsuario(String usuario) {
-		
+	public void setUsuario(String usuario) { // busca pra ver se já existe
+		this.usuario = usuario;		
 	}
-	public String getUsuario() { // Erro pq não tá retornando uma String ainda.
-		return "Teste";
+	public String getUsuario() { 
+		return this.usuario;
 	}
-	public Vector<Perfil> getSeguidos() { // Erro pq não tá retornando um Vector ainda.
-		
+	public Vector<Perfil> getSeguidos() { // busca pra ver se existe
+		return this.seguidos;		
 	}
-	public Vector<Perfil> getSeguidores(){ // Erro pq não tá retornando um Vector ainda.
-		
+	public Vector<Perfil> getSeguidores(){ // busca pra ver se existe
+		return this.seguidores;
 	}
-	public Vector<Tweet> getTimeline(){
-		
+	public Vector<Tweet> getTimeline(){ // busca pra ver se existe
+		return this.timeline;
 	}
 	public void setAtivo(boolean valor) {
+		this.ativo = valor;
 		
 	}
 	public boolean isAtivo() {
-		return true;
+		return this.ativo;
 	}
+	
+	
+	
+	// MÉTODOS MARCEL DE TESTE
+	//public String buscar(Vector<Perfil> usuario) {
+		
+	//}
+	
+	
+	
+	
 }
