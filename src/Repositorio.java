@@ -33,6 +33,11 @@ public class Repositorio implements IRepositorioUsuario {
 		if (this.buscar(usuario.getUsuario()) != null) {
 			Perfil conta = this.buscar(usuario.getUsuario());
 			conta.setAtivo(usuario.isAtivo());
+		    if (usuario instanceof PessoaFisica) {
+		    	((PessoaFisica) conta).setCpf(((PessoaFisica) usuario).getCpf());
+		    } else if (usuario instanceof PessoaJuridica) {
+		    	((PessoaJuridica) conta).setCnpj(((PessoaJuridica) usuario).getCnpj());
+		    }
 		}else {
 			throw new UNCException(usuario.getUsuario());
 		}		
