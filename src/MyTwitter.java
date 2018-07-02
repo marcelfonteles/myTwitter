@@ -109,10 +109,10 @@ public class MyTwitter implements ITwitter {
 					throw new PDException(seguidorClass.getUsuario());
 				}
 			} else {
-				throw new PIException(seguidoClass.getUsuario()); 
+				throw new PIException(seguido); 
 			}
 		} else {
-			throw new PIException(seguidorClass.getUsuario());
+			throw new PIException(seguidor);
 		}
 		
 	}
