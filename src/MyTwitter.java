@@ -97,6 +97,12 @@ public class MyTwitter implements ITwitter {
 			if (seguidoClass != null) {
 				if (seguidorClass.isAtivo()) {
 					if (seguidoClass.isAtivo()) {
+						for (Perfil perfil : seguidoClass.getSeguidores()) {
+							if ( perfil.getUsuario().equalsIgnoreCase(seguidor)) {
+								System.out.println(seguidor + " já segue o " + seguido);
+								return;
+							}
+						}						
 						seguidorClass.addSeguido(seguidoClass);
 						// Adicionando os novos tweets da pessoa seguida na timeline
 						for (Tweet tweet : tweets(seguidoClass.getUsuario())) {

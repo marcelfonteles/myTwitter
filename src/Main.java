@@ -121,11 +121,51 @@ public class Main {
 					}
 					break;
 				case 6:
+					try {
+						System.out.print("Digite o nome do usuário: ");
+						String usuario = scanner.next();
+						int numero = twitter.numeroSeguidores(usuario);
+						System.out.println(usuario + " tem " + numero + " seguidor(es)");
+					} catch(PIException exception) {
+						System.out.println("Perfil inexistente.");
+					} catch(PDException exception) {
+						System.out.println("Perfil já está desativado");
+					}
 					
 					break;
 				case 7:
+					try {
+						System.out.print("Digite o nome do usuário: ");
+						String usuario = scanner.next();
+						Vector<Perfil> seguidores = twitter.seguidores(usuario);
+						int contSeguidor = 0;
+						System.out.println("Seus seguidores: ");
+						for (Perfil seguidor : seguidores) {
+							contSeguidor++;
+							System.out.println(contSeguidor + " - " + seguidor.getUsuario());
+						} 
+					} catch(PIException exception) {
+						System.out.println("Perfil inexistente.");
+					} catch(PDException exception) {
+						System.out.println("Perfil já está desativado");
+					}					
 					break;
 				case 8:
+					try {
+						System.out.print("Digite o nome do usuário: ");
+						String usuario = scanner.next();
+						Vector<Perfil> seguidos = twitter.seguidos(usuario);
+						int contSeguidor = 0;
+						System.out.println("Você segue: ");
+						for (Perfil seguido : seguidos) {
+							contSeguidor++;
+							System.out.println(contSeguidor + " - " + seguido.getUsuario());
+						} 
+					} catch(PIException exception) {
+						System.out.println("Perfil inexistente.");
+					} catch(PDException exception) {
+						System.out.println("Perfil já está desativado");
+					}		
 					break;
 				case 9: 
 					break;
