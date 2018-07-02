@@ -7,9 +7,13 @@ public class Repositorio implements IRepositorioUsuario {
 	// Todos os perfis.
 	private Vector<Perfil> allPerfil;
 	
+	public Repositorio() {
+		this.allPerfil = new Vector<Perfil>();
+	}
+	
 	// Cadastrar perfil
 	public void cadastrar(Perfil usuario) throws UJCException {
-		if (this.buscar(usuario.getUsuario()) == null){
+		if (buscar(usuario.getUsuario()) == null){
 			this.allPerfil.add(usuario);
 			System.out.println("Usuário cadastrado com sucesso.");
 		} else {
@@ -19,9 +23,13 @@ public class Repositorio implements IRepositorioUsuario {
 	
 	// Procurar nomes de perfis iguais
 	public Perfil buscar(String usuario) {
+		System.out.println("Número de Usuários(inicio): " + allPerfil.size());
+		if (allPerfil.size() == 0) {
+			return null;
+		}
 		Perfil user = null;
 		for (Perfil perfil : allPerfil) {
-			if (perfil.getUsuario() == usuario) {
+			if (perfil.getUsuario().equalsIgnoreCase(usuario)) {
 				user = perfil;
 			}			
 		}
