@@ -52,14 +52,104 @@ public class MyTwitter implements ITwitter {
 			} else {
 				throw new PIException(usuario);
 			}
+		} finally {
+			
 		}
 	}
-	public Vector<Tweet> timeline(String usuario)throws PIException, PDException{
+	public Vector<Tweet> timeline(String usuario) throws PIException, PDException{
+		Perfil perfil = repositorio.buscar(usuario);
+		if (perfil != null) {
+			if (perfil.isAtivo()) {
+				return perfil.getTimeline();
+			} else {
+				throw new PDException(usuario);
+			}
+		} else {
+			throw new PIException(usuario);
+		}
+	}
+	public Vector<Tweet> tweets(String usuario) throws PIException, PDException{
+		Perfil perfil = repositorio.buscar(usuario);
+		if (perfil != null) {
+			if (perfil.isAtivo()) {
+				Vector<Tweet> yourTweets = new Vector<Tweet>();
+				for (Tweet tweet : perfil.getTimeline()) {
+					if (tweet.getUsuario() == perfil.getUsuario()) {
+						yourTweets.add(tweet);
+					}
+				}
+				return yourTweets;
+			} else {
+				throw new PDException(usuario);
+			}
+		} else {
+			throw new PIException(usuario);
+		}
+	}
+	public void seguir(String seguidor, String seguido) throws PIException, PDException, SIException {
+		Perfil seguidorClass = repositorio.buscar(seguidor);
+		Perfil seguidoClass = repositorio.buscar(seguido);
+		if (seguidorClass == seguidoClass) {
+			throw new SIException(seguidorClass.getUsuario());
+		}
+		if (seguidorClass != null) {
+			if (seguidoClass != null) {
+				if (seguidorClass.isAtivo()) {
+					if (seguidoClass.isAtivo()) {
+						seguidorClass.addSeguido(seguidoClass);
+						// Adicionando os novos tweets da pessoa seguida na timeline
+						for (Tweet tweet : tweets(seguidoClass.getUsuario())) {
+							seguidorClass.addTweet(tweet);
+						}
+						seguidoClass.addSeguidor(seguidorClass);
+					} else {
+						throw new PDException(seguidoClass.getUsuario());
+					}
+				} else {
+					throw new PDException(seguidorClass.getUsuario());
+				}
+			} else {
+				throw new PIException(seguidoClass.getUsuario()); 
+			}
+		} else {
+			throw new PIException(seguidorClass.getUsuario());
+		}
 		
 	}
-	public Vector<Tweet> tweets(String usuario) throws PIException, PDException;
-	public void seguir(String seguidor, String seguido) throws PIException, PDException, SIException;
-	public int numeroSeguidores(String usuario) throws PIException, PDException;
-	public Vector<Perfil> seguidores(String usuario) throws PIException, PDException;
-	public Vector<Perfil> seguidos(String usuario) throws PIException, PDException;
+	public int numeroSeguidores(String usuario) throws PIException, PDException {
+		Perfil perfil = repositorio.buscar(usuario);
+		if (perfil != null) {
+			if (perfil.isAtivo()) {
+				return perfil.getSeguidores().size();
+			} else {
+				throw new PDException(usuario);
+			}
+		} else {
+			throw new PIException(usuario);
+		}
+	}
+	public Vector<Perfil> seguidores(String usuario) throws PIException, PDException {
+		Perfil perfil = repositorio.buscar(usuario);
+		if (perfil != null) {
+			if (perfil.isAtivo()) {
+				return perfil.getSeguidores();
+			} else {
+				throw new PDException(usuario);
+			}
+		} else {
+			throw new PIException(usuario);
+		}
+	}
+	public Vector<Perfil> seguidos(String usuario) throws PIException, PDException {
+		Perfil perfil = repositorio.buscar(usuario);
+		if (perfil != null) {
+			if (perfil.isAtivo()) {
+				return perfil.getSeguidos();
+			} else {
+				throw new PDException(usuario);
+			}
+		} else {
+			throw new PIException(usuario);
+		}
+	}
 }
