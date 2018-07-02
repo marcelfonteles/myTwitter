@@ -16,6 +16,7 @@ public class Repositorio implements IRepositorioUsuario {
 		if (buscar(usuario.getUsuario()) == null){
 			this.allPerfil.add(usuario);
 			System.out.println("Usuário cadastrado com sucesso.");
+			System.out.println("Número de Usuários(final): " + allPerfil.size());
 		} else {
 			throw new UJCException(usuario.getUsuario());
 		}		
@@ -23,7 +24,7 @@ public class Repositorio implements IRepositorioUsuario {
 	
 	// Procurar nomes de perfis iguais
 	public Perfil buscar(String usuario) {
-		System.out.println("Número de Usuários(inicio): " + allPerfil.size());
+		
 		if (allPerfil.size() == 0) {
 			return null;
 		}

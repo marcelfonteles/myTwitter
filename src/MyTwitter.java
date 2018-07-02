@@ -23,6 +23,7 @@ public class MyTwitter implements ITwitter {
 				Perfil perfil = repositorio.buscar(usuario);
 				if (perfil.isAtivo()) {
 					perfil.setAtivo(false);
+					System.out.println("Perfil desativado com sucesso.");
 				} else {
 					throw new PDException(usuario);
 				}
@@ -74,7 +75,7 @@ public class MyTwitter implements ITwitter {
 			if (perfil.isAtivo()) {
 				Vector<Tweet> yourTweets = new Vector<Tweet>();
 				for (Tweet tweet : perfil.getTimeline()) {
-					if (tweet.getUsuario() == perfil.getUsuario()) {
+					if (tweet.getUsuario().equalsIgnoreCase(perfil.getUsuario())){
 						yourTweets.add(tweet);
 					}
 				}

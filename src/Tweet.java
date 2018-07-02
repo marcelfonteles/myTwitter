@@ -3,6 +3,11 @@ public class Tweet {
 	private String usuario;
 	private String mensagem;
 	
+	public Tweet() {
+		usuario = null;
+		mensagem = null;
+	}
+	
 	// MÉTODOS
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
