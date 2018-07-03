@@ -5,6 +5,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import Exceptions.*;
 public class Main {
+	/*
+	 * Repositorio: método atualizar??
+	 * alterar o nome
+	 * alterar cpf
+	 * alterar cnpj  
+	 * */	
+	
 	
 	public static void main(String[] args) {
 		Repositorio repositorio = new Repositorio();
@@ -26,14 +33,15 @@ public class Main {
 			System.out.println("6 - Ver Número de Seguidores.");
 			System.out.println("7 - Ver Seguidores.");
 			System.out.println("8 - Ver Seguidos.");
+			System.out.println("9 - Todos os Perfis.");
 			System.out.println("10 - Sair do Programa");
 			System.out.println("################################################");
 			System.out.print("Opção: ");
-			int tela = scanner.nextInt();
+			int opcao = scanner.nextInt();
 			System.out.println("################################################");
 			
 			
-			switch (tela) {
+			switch (opcao) {
 				case 0:
 					try {
 						System.out.print("Digite o nome do usuário: ");
@@ -167,7 +175,8 @@ public class Main {
 						System.out.println("Perfil já está desativado");
 					}		
 					break;
-				case 9: 
+				case 9:
+					repositorio.todosPerfis();
 					break;
 				case 10:
 					runningProgram = false;

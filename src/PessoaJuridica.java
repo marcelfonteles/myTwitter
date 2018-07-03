@@ -1,4 +1,3 @@
-import java.util.Vector;
 
 public class PessoaJuridica extends Perfil {
 	private long cpnj;

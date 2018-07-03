@@ -21,17 +21,18 @@ public class MyTwitter implements ITwitter {
 		try {
 			if (repositorio.buscar(usuario) != null) {
 				Perfil perfil = repositorio.buscar(usuario);
-				if (perfil.isAtivo()) {
+				if (perfil != null && perfil.isAtivo()) {
 					perfil.setAtivo(false);
+					repositorio.atualizar(perfil);
 					System.out.println("Perfil desativado com sucesso.");
 				} else {
 					throw new PDException(usuario);
 				}
 			} else {
 				throw new PIException(usuario); 
-			}		
-		} finally {
-			
+			}
+		} catch(UNCException exception) {
+			throw new PIException(usuario);
 		}
 	}
 	
@@ -159,4 +160,5 @@ public class MyTwitter implements ITwitter {
 			throw new PIException(usuario);
 		}
 	}
+	
 }

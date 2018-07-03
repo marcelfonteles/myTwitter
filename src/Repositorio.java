@@ -1,5 +1,4 @@
 import java.util.Vector;
-
 import Exceptions.UJCException;
 import Exceptions.UNCException;
 
@@ -37,19 +36,28 @@ public class Repositorio implements IRepositorioUsuario {
 		return user;
 	}
 	
-	
 	public void atualizar(Perfil usuario) throws UNCException {
-		if (this.buscar(usuario.getUsuario()) != null) {
-			Perfil conta = this.buscar(usuario.getUsuario());
-			conta.setAtivo(usuario.isAtivo());
-		    if (usuario instanceof PessoaFisica) {
-		    	((PessoaFisica) conta).setCpf(((PessoaFisica) usuario).getCpf());
-		    } else if (usuario instanceof PessoaJuridica) {
-		    	((PessoaJuridica) conta).setCnpj(((PessoaJuridica) usuario).getCnpj());
-		    }
+		Perfil contaAtualizar = this.buscar(usuario.getUsuario());
+		if (contaAtualizar != null) {
+			contaAtualizar.setAtivo(usuario.isAtivo());
+			if (contaAtualizar instanceof PessoaFisica) {
+				((PessoaFisica) contaAtualizar).setCpf(((PessoaFisica) usuario).getCpf());
+			} else if (contaAtualizar instanceof PessoaJuridica) {
+				((PessoaJuridica) contaAtualizar).setCnpj(((PessoaJuridica) usuario).getCnpj());				
+			}			
 		}else {
 			throw new UNCException(usuario.getUsuario());
 		}		
 	}
+	
+	// TODOS OS PERFIS
+		public void todosPerfis() {
+			int count = 0;
+			for (Perfil perfil : allPerfil) {
+				count++;
+				System.out.println(count + " - " + perfil.getUsuario());
+				System.out.println("Ativo: " + perfil.isAtivo());
+			}
+		}
 
 }
